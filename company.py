@@ -1,5 +1,10 @@
 class Employee:
 
+    '''
+    Class that creates employee instances based on personal details (first, last name etc).
+    Includes method for outputing employee's email address, apply pay rise and promotion.
+    '''
+
     raise_amount = 1.5
 
     def __init__(self, first, last, pay, years_in_company):
