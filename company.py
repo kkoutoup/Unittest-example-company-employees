@@ -1,4 +1,7 @@
 class CompanyDatabaseError(Exception):
+    '''
+    Create a custom error inheriting from Exception class
+    '''
     pass
 
 class Employee:
@@ -37,10 +40,6 @@ class Employee:
 
     def add_managees(self):
         if self.can_manage:
-            managee_first_name = input("What is the name of the person you're managing? ")
-            managee_last_name = input("What is the surname of the person you're managing? ")
-            self.employees_managed = []
-            self.employees_managed.append([f"{managee_first_name} {managee_last_name}"])
+           pass
         else:
             raise CompanyDatabaseError("Can't add managees")
-            

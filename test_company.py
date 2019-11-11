@@ -2,17 +2,13 @@ import unittest
 from company import Employee, CompanyDatabaseError
 
 class TestEmployeeCreation(unittest.TestCase):
-
-    @staticmethod
-    def can_instantiate_class():
-        emloyee = Employee()
-
+    
     def setUp(self):
         '''
         Creates re-usable cases for tests that follow
         '''
         self.emp_1 = Employee("Kostas", "Koutoupis", 30000, 3, False)
-        self.emp_2 = Employee("Sue", "Weatherspoon", 20000, 2, True)
+        self.emp_2 = Employee("Sue", "Weatherspoon", 20000, 2, True)   
          
     def test_fullname(self):
         '''
@@ -66,23 +62,12 @@ class TestEmployeeCreation(unittest.TestCase):
         promotion_2 = self.emp_2.can_be_promoted()
         self.assertFalse(promotion_2)
 
-    def test_add_managees(self):
+    def test_add_managees_for_non_managerial_staff(self):
         '''
         Should raise CompanyDatabaseError if can_manage = False
         '''
         with self.assertRaises(CompanyDatabaseError):
             self.emp_1.add_managees()
-
-    def test_add_managees(self):
-        '''
-        Testing to see if managees can be added
-        '''
-        # call method on employee 2 and pass in "Kostas", "Koutoupis"
-        # for first and last name respectively
-        
-        self.emp_2.add_managees()
-        self.assertEqual(self.emp_2.employees_managed, [["Kostas Koutoupis"]])
-    
 
 if __name__ == '__main__':
     unittest.main()
