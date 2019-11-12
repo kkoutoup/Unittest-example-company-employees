@@ -138,6 +138,16 @@ class TestManagerCreation(unittest.TestCase):
     self.assertEqual(self.manager_1.email, "SmithJ@company.uk")
     self.assertEqual(self.manager_2.email, "StewartK@company.uk")
 
+  def test_manager_email_regex(self):
+      '''
+      Testing inherited method against regex
+      '''
+      email1 = self.manager_1.email
+      self.assertRegex(email1, r"[\w]+[\w]@company\.uk")
+
+      email2 = self.manager_2.email
+      self.assertRegex(email2, r"[\w]+[\w]@company\.uk")
+
   def test_manager_apply_raise(self):
     '''
     Testing inherited apply_raise method works
