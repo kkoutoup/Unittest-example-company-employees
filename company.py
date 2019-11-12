@@ -72,9 +72,3 @@ class Manager(Employee):
     else:
         for employee in self.employees:
             print(employee)
-manager_2 = Manager("Kristen", "Stewart", 50000, 5, "Judy")
-manager_2.apply_raise()
-print(manager_2.pay)
-print(manager_2.employees)
-manager_2.remove_employee("Judy")
-print(manager_2.employees)
