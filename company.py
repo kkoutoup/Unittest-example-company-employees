@@ -46,10 +46,10 @@ class Manager(Employee):
 
   def __init__(self, first, last, pay, years_in_company, employees = None):
     super().__init__(first, last, pay, years_in_company)
-    if employees == None:
-      self.employees = []
+    if employees is None:
+        self.employees = []
     else:
-      self.employees = employees
+        self.employees = [employees]
 
   def add_employee(self, employee_name):
     if employee_name in self.employees:
@@ -58,9 +58,23 @@ class Manager(Employee):
       self.employees.append(employee_name)
 
   def remove_employee(self, employee_name):
-    if employee_name in self.employees:
-      pass
+    if self.employees == []:
+        raise CompanyDatabaseError("No employees have been added yet")
     else:
-      raise CompanyDatabaseError("Employee not found in the company's database")
+        if employee_name in self.employees:
+            self.employees.remove(employee_name)
+        else:
+          raise CompanyDatabaseError("Employee not found in the company's database")
 
-  
+  def list_employees(self):
+    if len(self.employees) == 0:
+        raise CompanyDatabaseError("No employees have been added so far")
+    else:
+        for employee in self.employees:
+            print(employee)
+manager_2 = Manager("Kristen", "Stewart", 50000, 5, "Judy")
+manager_2.apply_raise()
+print(manager_2.pay)
+print(manager_2.employees)
+manager_2.remove_employee("Judy")
+print(manager_2.employees)
