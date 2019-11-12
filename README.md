@@ -10,11 +10,12 @@ A simple script that adds employees to a fictional company database with their d
 Familiarising myself with Python's unittest library
 
 ### File structure
-Main file `company.py` that is being tested with `test_company.py`
+Main file `company.py` that is being tested with `test_employee_class.py` and `test_manager_sub_class.py`
 ```
 company.py
 |
-test_checkout.py
+test_employee_class.py
+test_manager_sub_class.py
 ```
 
 ### Dependencies

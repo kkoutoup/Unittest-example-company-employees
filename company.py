@@ -40,7 +40,7 @@ class Employee:
 
 class Manager(Employee):
   '''
-  Inherits from Employee class
+  Inherits from Employee class and adds a few methods specific to this class
   '''
   raise_amount = 1.8
 
