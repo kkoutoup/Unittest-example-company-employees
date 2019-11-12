@@ -96,7 +96,4 @@ class TestManagerCreation(unittest.TestCase):
     raise_manager_2 = self.manager_2.apply_raise()
     self.assertEqual(raise_manager_2, 108000)
 
-if __name__ == '__main__':
-    unittest.main()
-
     
