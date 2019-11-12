@@ -52,10 +52,13 @@ class Manager(Employee):
         self.employees = [employees]
 
   def add_employee(self, employee_name):
-    if employee_name in self.employees:
-      raise CompanyDatabaseError(f"Employee '{employee_name}' already in the company's database")
+    if type(employee_name) in [int, float, None] or employee_name == "":
+      raise TypeError("Please make sure employee name is a valid string")
     else:
-      self.employees.append(employee_name)
+      if employee_name in self.employees:
+        raise CompanyDatabaseError(f"Employee '{employee_name}' already in the company's database")
+      else:
+        self.employees.append(employee_name)
 
   def remove_employee(self, employee_name):
     if self.employees == []:

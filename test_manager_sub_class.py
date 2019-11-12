@@ -25,6 +25,16 @@ class TestManagerCreation(unittest.TestCase):
     with self.assertRaises(CompanyDatabaseError):
       self.manager_1.add_employee("Kostas")
 
+  def test_manager_add_employee_wrong_type(self):
+    '''
+    Raise exception if name of employee passed is empty string or wrong type
+    '''
+    with self.assertRaises(TypeError):
+      self.manager_1.add_employee("")
+
+    with self.assertRaises(TypeError):
+      self.manager_1.add_employee(3)
+
   def test_manager_add_employee(self):
     '''
     Testing method works
@@ -77,14 +87,14 @@ class TestManagerCreation(unittest.TestCase):
     self.assertEqual(self.manager_2.email, "StewartK@company.uk")
 
   def test_manager_email_regex(self):
-      '''
-      Testing inherited method against regex
-      '''
-      email1 = self.manager_1.email
-      self.assertRegex(email1, r"[\w]+[\w]@company\.uk")
+    '''
+    Testing inherited method against regex
+    '''
+    email1 = self.manager_1.email
+    self.assertRegex(email1, r"[\w]+[\w]@company\.uk")
 
-      email2 = self.manager_2.email
-      self.assertRegex(email2, r"[\w]+[\w]@company\.uk")
+    email2 = self.manager_2.email
+    self.assertRegex(email2, r"[\w]+[\w]@company\.uk")
 
   def test_manager_apply_raise(self):
     '''
@@ -96,4 +106,5 @@ class TestManagerCreation(unittest.TestCase):
     raise_manager_2 = self.manager_2.apply_raise()
     self.assertEqual(raise_manager_2, 108000)
 
-    
+if __name__ == "__main__":
+  unittest.main()    
