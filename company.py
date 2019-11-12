@@ -53,7 +53,7 @@ class Manager(Employee):
 
   def add_employee(self, employee_name):
     if employee_name in self.employees:
-      raise CompanyDatabaseError("Employee already in the company's database")
+      raise CompanyDatabaseError(f"Employee '{employee_name}' already in the company's database")
     else:
       self.employees.append(employee_name)
 
@@ -64,7 +64,7 @@ class Manager(Employee):
         if employee_name in self.employees:
             self.employees.remove(employee_name)
         else:
-          raise CompanyDatabaseError("Employee not found in the company's database")
+          raise CompanyDatabaseError(f"Employee '{employee_name}' not found in the company's database")
 
   def list_employees(self):
     if len(self.employees) == 0:
