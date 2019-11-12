@@ -13,12 +13,11 @@ class Employee:
 
     raise_amount = 1.5
 
-    def __init__(self, first, last, pay, years_in_company, can_manage = False):
+    def __init__(self, first, last, pay, years_in_company):
         self.first = first
         self.last = last
         self.pay = pay
         self.years_in_company = years_in_company
-        self.can_manage = can_manage
 
     @property
     def fullname(self):
@@ -38,8 +37,30 @@ class Employee:
         else:
             return False
 
-    def add_managees(self):
-        if self.can_manage:
-           pass
-        else:
-            raise CompanyDatabaseError("Can't add managees")
+
+class Manager(Employee):
+  '''
+  Inherits from Employee class
+  '''
+  raise_amount = 1.8
+
+  def __init__(self, first, last, pay, years_in_company, employees = None):
+    super().__init__(first, last, pay, years_in_company)
+    if employees == None:
+      self.employees = []
+    else:
+      self.employees = employees
+
+  def add_employee(self, employee_name):
+    if employee_name in self.employees:
+      raise CompanyDatabaseError("Employee already in the company's database")
+    else:
+      self.employees.append(employee_name)
+
+  def remove_employee(self, employee_name):
+    if employee_name in self.employees:
+      pass
+    else:
+      raise CompanyDatabaseError("Employee not found in the company's database")
+
+  
